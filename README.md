@@ -18,5 +18,6 @@ $ make migrate
 ```
 - サービス：http://localhost
 - API：http://localhost:8000
+- PG ADMIN：http://localhost:8080
 
 Ctrl + Cで終了
