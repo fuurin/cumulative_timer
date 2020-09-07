@@ -59,7 +59,7 @@ services:
     privileged: true
     volumes:
       - ./frontend:/frontend:cached
-    command: yarn serve
+    command: bash -c 'yarn && yarn serve'
 
 volumes:
   db:
