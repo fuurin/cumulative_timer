@@ -50,6 +50,16 @@ services:
       - ./backend:/backend:cached
       - cargo-cache:/usr/local/cargo/registry
     command: bash -c 'diesel setup && cargo watch -x run'
+  
+  frontend:
+    build: ./frontend/docker
+    container_name: frontend
+    ports:
+      - 80:8080
+    privileged: true
+    volumes:
+      - ./frontend:/frontend:cached
+    command: yarn serve
 
 volumes:
   db:
