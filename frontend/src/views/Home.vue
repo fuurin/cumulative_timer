@@ -1,18 +1,49 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <h1>User List</h1>
+    <button @click="load()">Load</button>
+    <UserList :users="state.users"/>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+import { reactive } from 'vue'
+import axios from 'axios'
+import UserList from '@/components/UserList.vue'
 
-@Options({
+const API_BASE_URL = 'http://localhost:8000'
+
+function apiCall (endpoint: string) {
+  return `${API_BASE_URL}/${endpoint}`
+}
+
+type User = {
+  id: number;
+  name: string;
+}
+
+export default {
   components: {
-    HelloWorld
+    UserList
+  },
+
+  setup () {
+    const state = reactive<{
+      users: Array<User>;
+    }>({
+      users: []
+    })
+
+    function load () {
+      axios.get(apiCall('users'))
+        .then(res => {
+          state.users = res.data.map(function (user: User) {
+            return { id: user.id, name: user.name }
+          })
+        })
+    }
+
+    return { state, load }
   }
-})
-export default class Home extends Vue {}
+}
 </script>
