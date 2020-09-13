@@ -59,7 +59,21 @@ services:
     privileged: true
     volumes:
       - ./frontend:/frontend:cached
+    depends_on:
+      - backend
     command: yarn serve
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: swagger-ui
+    ports:
+      - 81:8080
+    privileged: true
+    environment:
+      SWAGGER_JSON: swagger.json
+    volumes:
+      - ./swagger/swagger.json:/usr/share/nginx/html/swagger.json:cached
+
 
 volumes:
   db:
