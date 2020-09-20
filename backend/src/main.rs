@@ -4,9 +4,11 @@
 
 pub mod schema;
 pub mod models;
+pub mod cors;
 
 use models::User;
 use schema::users::dsl::*;
+use cors::CorsFairing;
 use diesel::pg::PgConnection;
 use diesel::prelude::*;
 use std::env;
@@ -36,5 +38,6 @@ fn users_index() -> Json<Vec<User>> {
 fn main() {
     rocket::ignite()
         .mount("/", routes![index, users_index])
+        .attach(CorsFairing)
         .launch();
 }

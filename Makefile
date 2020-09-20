@@ -38,3 +38,7 @@ migrate_check:
 # frontendのコンテナに入る
 front:
 	docker-compose exec frontend bash
+
+# frontendのコード整形
+front_lint:
+	docker-compose exec frontend node_modules/.bin/eslint --fix --ext .ts,.vue --ignore-path .gitignore .
