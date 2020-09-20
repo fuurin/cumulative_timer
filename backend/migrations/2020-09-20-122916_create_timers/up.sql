@@ -1,5 +1,5 @@
 CREATE TABLE timers (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id),
-    name VARCHAR(64) NOT NULL
+    name VARCHAR(255) NOT NULL
 );
