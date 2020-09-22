@@ -49,7 +49,7 @@ services:
     volumes:
       - ./backend:/backend:cached
       - cargo-cache:/usr/local/cargo/registry
-    command: bash -c 'diesel setup && cargo watch -x run'
+    command: bash -c 'diesel setup && cargo watch -x test -x run'
   
   frontend:
     build: ./frontend/docker
