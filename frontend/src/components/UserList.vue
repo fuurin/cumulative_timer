@@ -1,9 +1,7 @@
-<template>
-  <ul>
-    <li v-for="user in users" :key="user">
-      id: {{ user.id }}, name: {{ user.name }}
-    </li>
-  </ul>
+<template lang="pug">
+ul
+  li(v-for="user in users" :key="user")
+    div id: {{ user.id }}, name: {{ user.name }}
 </template>
 
 <script lang="ts">
