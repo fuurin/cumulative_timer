@@ -9,6 +9,14 @@ table! {
 }
 
 table! {
+    tags (id) {
+        id -> Int4,
+        uid -> Varchar,
+        name -> Varchar,
+    }
+}
+
+table! {
     timers (id) {
         id -> Int4,
         uid -> Varchar,
@@ -28,6 +36,7 @@ joinable!(records -> timers (timer_id));
 
 allow_tables_to_appear_in_same_query!(
     records,
+    tags,
     timers,
     users,
 );
