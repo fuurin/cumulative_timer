@@ -1,9 +1,8 @@
-<template>
-  <div class="home">
-    <h1>User List</h1>
-    <button @click="load()">Load</button>
-    <UserList :users="state.users"/>
-  </div>
+<template lang="pug">
+.home
+  h1 UserList
+  button(@click="load()") Load
+  UserList(:users="state.users")
 </template>
 
 <script lang="ts">
