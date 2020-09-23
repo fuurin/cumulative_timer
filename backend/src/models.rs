@@ -12,7 +12,7 @@ pub struct User {
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct Timer {
     pub id: i32,
-    pub user_id: i32,
+    pub uid: String,
     pub name: String,
 }
 
