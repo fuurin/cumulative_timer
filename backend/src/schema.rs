@@ -11,7 +11,7 @@ table! {
 table! {
     timers (id) {
         id -> Int4,
-        user_id -> Int4,
+        uid -> Varchar,
         name -> Varchar,
     }
 }
@@ -25,7 +25,6 @@ table! {
 }
 
 joinable!(records -> timers (timer_id));
-joinable!(timers -> users (user_id));
 
 allow_tables_to_appear_in_same_query!(
     records,
