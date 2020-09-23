@@ -6,9 +6,10 @@ pub mod schema;
 pub mod models;
 pub mod cors;
 pub mod db;
-pub mod users_controller;
+pub mod controllers;
 
 use cors::CorsFairing;
+use controllers::users;
 
 #[get("/")]
 fn index() -> &'static str {
@@ -17,7 +18,7 @@ fn index() -> &'static str {
 
 fn main() {
     rocket::ignite()
-        .mount("/", routes![index, users_controller::index, users_controller::show])
+        .mount("/", routes![index, users::index, users::show])
         .attach(CorsFairing)
         .launch();
 }
