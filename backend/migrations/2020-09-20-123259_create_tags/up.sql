@@ -1,0 +1,5 @@
+CREATE TABLE tags (
+    id SERIAL PRIMARY KEY,
+    uid VARCHAR(127) NOT NULL,
+    name VARCHAR(255) NOT NULL
+);
